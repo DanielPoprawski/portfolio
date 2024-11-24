@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navbar, Container, Nav } from "react-bootstrap";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import Quiz from "./components/Quiz";
+import Login from "./components/Login";
 
 function App() {
-  const [count, setCount] = useState(0)
+        return (
+                <>
+                        <Navbar bg="dark" data-bs-theme="dark">
+                                <Container>
+                                        <Navbar.Brand href="#home">
+                                                <img src="./src/assets/DLogoCurvy.svg" width={"48px"} height={"48px"} />
+                                        </Navbar.Brand>
+                                        <Nav className="me-auto">
+                                                <Nav.Link href="#home">
+                                                        <b>Home</b>
+                                                </Nav.Link>
+                                                <Nav.Link href="#features">About</Nav.Link>
+                                                <Nav.Link href="#pricing">Contact Me</Nav.Link>
+                                        </Nav>
+                                </Container>
+                        </Navbar>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+                        <div className="hero">
+                                <h2>Hi, I am a web developer from Sarasota, Florida</h2>
+                                <h3>
+                                        I have been programming since I was a kid and I am very glad to finally be able
+                                        to take my hobby and turn it into something I enjoy doing for a living, and
+                                        benefitting other people and their businesses. Please take a moment to look at
+                                        the some of the components below that I could make a part of your organization's
+                                        website.
+                                </h3>
+                        </div>
+                        <div className="hero" style={{ display: "flex" }}>
+                                <Quiz />
+                                <Login />
+                        </div>
+                </>
+        );
 }
 
-export default App
+export default App;
