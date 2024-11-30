@@ -1,10 +1,10 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
 import Header from "./components/Header";
+
 
 function App() {
         return (
