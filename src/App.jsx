@@ -4,24 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
+import Header from "./components/Header";
 
 function App() {
         return (
                 <>
-                        <Navbar bg="dark" data-bs-theme="dark">
-                                <Container>
-                                        <Navbar.Brand href="#home">
-                                                <img src="./src/assets/DLogoCurvy.svg" width={"48px"} height={"48px"} />
-                                        </Navbar.Brand>
-                                        <Nav className="me-auto">
-                                                <Nav.Link href="#home">
-                                                        <b>Home</b>
-                                                </Nav.Link>
-                                                <Nav.Link href="#features">About</Nav.Link>
-                                                <Nav.Link href="#pricing">Contact Me</Nav.Link>
-                                        </Nav>
-                                </Container>
-                        </Navbar>
+                        <Header/>
 
                         <div className="hero">
                                 <h2>Hi, I am a web developer from Sarasota, Florida</h2>
