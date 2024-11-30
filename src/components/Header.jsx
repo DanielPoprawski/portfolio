@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router";
 
 
 export default function Header() {
@@ -9,11 +10,11 @@ export default function Header() {
                                 <img src="./src/assets/DLogoCurvy.svg" width={"48px"} height={"48px"} />
                         </Navbar.Brand>
                         <Nav className="me-auto">
-                                <Nav.Link href="/">
-                                        <b>Home</b>
+                                <Nav.Link>
+                                        <Link to="/"><b>Home</b></Link>
                                 </Nav.Link>
-                                <Nav.Link href="#about">About</Nav.Link>
-                                <Nav.Link href="/contact">Contact Me</Nav.Link>
+                                <Nav.Link><Link to="/about">About</Link></Nav.Link>
+                                <Nav.Link><Link to="/contact">Contact Me</Link></Nav.Link>
                         </Nav>
                 </Container>
         </Navbar>
