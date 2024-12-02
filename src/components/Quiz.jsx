@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
+// TODO: ADD HTML form validation - https://react-bootstrap.netlify.app/docs/forms/validation
+
 export default function Quiz() {
         return (
                 <div className="demo-card">

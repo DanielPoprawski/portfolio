@@ -5,7 +5,7 @@ import "./index.css";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
 
-function App() {
+export default function Home() {
         return (
                 <>
                         <Navbar bg="dark" data-bs-theme="dark">
@@ -24,14 +24,14 @@ function App() {
                         </Navbar>
 
                         <div className="hero">
-                                <h2>Hi, I am a web developer from Sarasota, Florida</h2>
-                                <h3>
-                                        I have been programming since I was a kid and I am very glad to finally be able
-                                        to take my hobby and turn it into something I enjoy doing for a living, and
-                                        benefitting other people and their businesses. Please take a moment to look at
-                                        the some of the components below that I could make a part of your organization's
-                                        website.
-                                </h3>
+                                <h1>Hi, I am a web developer from Sarasota, Florida</h1>
+                                <h5>
+                                        &emsp; I have been programming since I was a kid and I am very glad to finally
+                                        be able to take my hobby and turn it into something I enjoy doing for a living,
+                                        and benefitting other people and their businesses. Please take a moment to look
+                                        at the some of the components below that I could make a part of your
+                                        organization's website.
+                                </h5>
                         </div>
                         <div className="hero" style={{ display: "flex" }}>
                                 <Quiz />
@@ -40,5 +40,3 @@ function App() {
                 </>
         );
 }
-
-export default App;
