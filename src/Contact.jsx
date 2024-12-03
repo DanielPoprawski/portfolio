@@ -31,12 +31,17 @@ export default function Contact() {
                 <>
                         <Header />
                         <div className="hero">
-                                <h2> Contact: </h2>
+                                <h2>
+                                        <b> Contact: </b>
+                                </h2>
+                                <br />
                                 <h4>
                                         If you would like to contact me, please leave a message here with your name,
                                         email (or phone number) and what services I may provide for you and I will
                                         contact you as soon as possible
                                 </h4>
+                                <br />
+                                <br />
                                 <Form onSubmit={handleSubmit} className="contact-form">
                                         <InputGroup controlId="formName">
                                                 <InputGroup.Text>Name</InputGroup.Text>
