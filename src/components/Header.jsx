@@ -24,9 +24,15 @@ export default function Header() {
                 // </Navbar>
 
                 <div className="header">
-                        <BigButton text="HOME" />
-                        <BigButton text="ABOUT" />
-                        <BigButton text="CONTACT" />
+                        <Link to="/">
+                                <BigButton text="HOME" />
+                        </Link>
+                        <Link to="/about">
+                                <BigButton text="ABOUT" />
+                        </Link>
+                        <Link to="/contact">
+                                <BigButton text="CONTACT" />
+                        </Link>
                 </div>
         );
 }

@@ -3,9 +3,7 @@ import { Button, Form } from "react-bootstrap";
 export default function Login() {
         return (
                 <div className="demo-card">
-                        <h2>
-                                <b>Basic Login form</b>
-                        </h2>
+                        <h2 style={{ fontWeight: "300", color: "black", textShadow: "none" }}>Basic Login form</h2>
                         <p>Upgrade your user experience with a login page</p>
                         <br />
                         <Form.Group className="mb-3">
@@ -16,8 +14,10 @@ export default function Login() {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" />
                         </Form.Group>
-                        <Button variant="dark"> Log in </Button>
-                        <Button variant="outline-dark"> Create Account</Button>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                                <Button variant="light">Log in</Button>
+                                <Button variant="outline-dark"> Create Account</Button>
+                        </div>
                         <br />
                         <a> Forgot password</a>
                 </div>

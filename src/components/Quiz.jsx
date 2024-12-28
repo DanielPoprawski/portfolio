@@ -6,9 +6,7 @@ import Form from "react-bootstrap/Form";
 export default function Quiz() {
         return (
                 <div className="demo-card">
-                        <h3>
-                                <b>A basic quiz box</b>
-                        </h3>
+                        <h2 style={{ fontWeight: "300", color: "black", textShadow: "none" }}>Basic Quiz</h2>
                         <p>
                                 <i>
                                         Get more customer interaction by adding a quiz components to your company's
@@ -44,7 +42,7 @@ export default function Quiz() {
                                         />
                                 </div>
                         </ul>
-                        <Button variant="dark">Submit</Button>
+                        <Button variant="light">Submit</Button>
                 </div>
         );
 }

@@ -4,6 +4,7 @@ import "./index.css";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
         return (
@@ -23,14 +24,18 @@ export default function Home() {
                                         and benefitting other people and their businesses. Please take a moment to look
                                         at the some of the components below that I could make a part of your
                                         organization's website.
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
                                 </h3>
                         </div>
-                        <div className="hero" style={{ display: "flex" }}>
+                        <div className="hero">
                                 <Quiz />
                                 <Login />
                         </div>
 
-                        <div className="hero" style={{ display: "flex" }}>
+                        <div className="hero" style={{ color: "black" }}>
                                 <p>
                                         Lorem ipsum odor amet, consectetuer adipiscing elit. Nec ornare natoque urna per
                                         feugiat egestas. Maximus dolor ultricies ut justo magnis dictumst vivamus
@@ -76,6 +81,7 @@ export default function Home() {
                                         urna. Lobortis laoreet convallis enim faucibus eu nunc curabitur.
                                 </p>
                         </div>
+                        <Footer />
                 </>
         );
 }

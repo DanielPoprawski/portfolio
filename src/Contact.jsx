@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import { Container, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { InputGroup } from "react-bootstrap";
+import Footer from "./components/Footer";
 
 export default function Contact() {
         const [data, setData] = useState({
@@ -84,6 +85,7 @@ export default function Contact() {
                                         </Button>
                                 </Form>
                         </div>
+                        <Footer />
                 </>
         );
 }
