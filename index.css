@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+/* * Inter, Noto Sans, Open Sans and Montserrat  */
+body {
+  background-color: #8f8f8f;
+  font-family: Inter;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Inter;
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 40;
+}
+
+h2 {
+  font-size: 32;
+}
+
+h3 {
+  font-size: 24;
+}
+
+img {
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.7254901961));
+  transition: 0.5s;
+}
+
+img:hover {
+  filter: drop-shadow(0px 0px 7px rgba(255, 255, 255, 0.9019607843));
+  transition: 0.5s;
+}
+
+.hero {
+  padding: 4rem 30% 4rem 30%;
+  background-color: #717171;
+  color: azure;
+}
+
+.demo-card {
+  border-style: none;
+  border-radius: 2rem;
+  box-shadow: black 3px 15px 25px 1px inset;
+  padding: 6rem 3rem 6rem 3rem;
+  margin: 1rem;
+  background: rgb(98, 98, 98);
+  text-shadow: rgba(17, 17, 17, 0.9764705882) 1px 1px 10px;
+  background: radial-gradient(circle, rgb(98, 98, 98) 5%, rgb(55, 55, 55) 75%);
+  max-width: 400px;
+}
+
+.contact-form {
+  border-style: none;
+  border-radius: 2rem;
+  box-shadow: black 2px 2px 6px 1px inset;
+  padding: 2rem 2rem 2rem 2rem;
+  margin: 1rem;
+  background: rgb(98, 98, 98);
+}
+
+.form-check {
+  border-radius: 1rem;
+  padding: 0.3rem 1rem 0.3rem 2rem;
+  margin: 0.3rem 0rem 0.3rem 0rem;
+  box-shadow: black 1px 1px 10px 1px inset;
+}
+
+.big-button {
+  width: 400px;
+  height: 125px;
+  margin: 3rem 2rem 2rem 2rem;
+  font-size: 40px;
+  font-family: Inter;
+  font-weight: 200;
+  border: none;
+  text-align: center;
+  align-content: center;
+  text-decoration-line: none;
+  background: radial-gradient(circle, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.splash {
+  text-align: center;
+  max-width: 1000px;
+  padding: 0rem 0rem 2rem 0rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=index.css.map */

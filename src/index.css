@@ -5,9 +5,22 @@ body {
   font-family: Inter;
 }
 
-h1,
+h1, h2, h3, h4, h5, h6 {
+  font-family: Inter;
+  font-weight: 200;
+  color: white;
+}
+
+h1 {
+  font-size: 40;
+}
+
 h2 {
-  font-family: Montserrat;
+  font-size: 32;
+}
+
+h3 {
+  font-size: 24;
 }
 
 img {
@@ -52,6 +65,43 @@ img:hover {
   padding: 0.3rem 1rem 0.3rem 2rem;
   margin: 0.3rem 0rem 0.3rem 0rem;
   box-shadow: black 1px 1px 10px 1px inset;
+}
+
+.big-button {
+  width: 400px;
+  height: 125px;
+  margin: 3rem 2rem 2rem 2rem;
+  font-size: 40px;
+  font-family: Inter;
+  font-weight: 200;
+  text-align: center;
+  align-content: center;
+  text-decoration-line: none;
+}
+
+.splash {
+  text-align: center;
+  max-width: 1000px;
+  padding: 0rem 0rem 2rem 0rem;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(90deg, rgb(238, 34, 34) 11%, rgb(240, 188, 94) 35%, rgb(246, 246, 45) 65%, rgb(228, 53, 53) 87%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+video {
+  position: fixed; /* Keep video fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the entire width of the viewport */
+  height: 100%; /* Cover the entire height of the viewport */
+  object-fit: cover; /* Scale video to cover the entire area */
+  z-index: -1; /* Place video behind other content */
 }
 
 /*# sourceMappingURL=index.css.map */
