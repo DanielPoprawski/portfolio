@@ -31,16 +31,14 @@ export default function Contact() {
         return (
                 <>
                         <Header />
-                        <div className="hero">
-                                <h2>
-                                        <b> Contact: </b>
-                                </h2>
+                        <div className="hero" style={{ flexDirection: "column", color: "black" }}>
+                                <h2 style={{ color: "black", textShadow: "none" }}>Contact:</h2>
                                 <br />
-                                <h4>
+                                <p>
                                         If you would like to contact me, please leave a message here with your name,
                                         email (or phone number) and what services I may provide for you and I will
                                         contact you as soon as possible
-                                </h4>
+                                </p>
                                 <br />
                                 <br />
                                 <Form onSubmit={handleSubmit} className="contact-form">
