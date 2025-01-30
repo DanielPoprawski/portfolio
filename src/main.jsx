@@ -1,5 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
 import Home from "./Home.jsx";
 import Contact from "./Contact.jsx";
 import About from "./About.jsx";
@@ -15,7 +17,7 @@ createRoot(document.getElementById("root")).render(
                         loop
                         id="background-video"
                         style={{ zIndex: "-1" }}
-                        className="absolute object-cover w-full h-full"
+                        className=" object-cover w-full h-full top-0 fixed"
                   >
                         <source
                               src="src/assets/Stockvideo.mp4"
@@ -23,11 +25,13 @@ createRoot(document.getElementById("root")).render(
                               className="object-cover w-full h-full absolute"
                         />
                   </video>
+                  <Header />
                   <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Contact />} path="/contact" />
                         <Route element={<About />} path="/about" />
                   </Routes>
+                  <Footer />
             </BrowserRouter>
       </StrictMode>
 );

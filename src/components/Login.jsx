@@ -12,7 +12,7 @@ export default function Login() {
                               className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="email"
                               type="email"
-                              placeholder="johndoe@youremail.net"
+                              placeholder="johndoe@example.com"
                         />
                   </div>
                   <div className="mb-4 bg-gray-900 rounded-md text-left">
@@ -23,7 +23,7 @@ export default function Login() {
                               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                               id="password"
                               type="password"
-                              placeholder="******"
+                              placeholder="**********"
                         />
                   </div>
                   <div>
@@ -35,7 +35,9 @@ export default function Login() {
                         </button>
                   </div>
                   <br />
-                  <a> Forgot password</a>
+                  <a href="javascript:void(0)">
+                        <u> Forgot password</u>
+                  </a>
             </div>
       );
 }

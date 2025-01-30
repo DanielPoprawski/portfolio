@@ -1,5 +1,3 @@
-// TODO: ADD HTML form validation - https://react-bootstrap.netlify.app/docs/forms/validation
-
 export default function Quiz() {
       return (
             <div className="bg-gray-100 p-6 rounded-lg max-w-sm overflow-hidden shadow-lg text-black">

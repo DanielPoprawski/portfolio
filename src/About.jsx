@@ -1,23 +1,48 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-
 export default function About() {
-        return (
-                <>
-                        <Header />
-                        <div className="hero">
-                                <p>
-                                        &emsp; My name is Daniel Poprawski. I just got out of the Army after 4 years of
-                                        service and I am pursuing a career as a front-end web developer. I have been
-                                        programming since I was a teenager when I first discovered HTML and CSS, and
-                                        later Javascript, my first programming language. After playing with Javscript I
-                                        moved on to Python and Java and then finally came back to Javascript after
-                                        discovering React. Programming is something that I have been passionate about
-                                        for as long as I remember and I would be very happy and honored to build your
-                                        website for you.
-                                </p>
+      return (
+            <>
+                  <div className="min-h-screen bg-gray-100 bg-opacity-75 flex flex-col">
+                        <div className="container mx-auto px-4 py-16 w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
+                              <p className="text-gray-800 text-lg leading-relaxed  mx-auto mb-16">
+                                    &emsp; My name is Daniel Poprawski. I just got out of the Army after 4 years of
+                                    service and I am pursuing a career as a front-end web developer. I have been
+                                    programming since I was a teenager when I first discovered HTML and CSS, and later
+                                    Javascript, my first programming language. After playing with Javscript I moved on
+                                    to Python and Java and then finally came back to Javascript after discovering React.
+                                    Programming is something that I have been passionate about for as long as I remember
+                                    and I would be very happy and honored to build your website for you.
+                              </p>
+                              <div className="flex flex-col space-y-16 mx-auto">
+                                    <div className="self-start">
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                                                <h3 className="text-2xl font-bold mb-4">Personal Blog</h3>
+                                                <p className="text-gray-600">
+                                                      A responsive blog built with React and Tailwind CSS, featuring
+                                                      dynamic content management.
+                                                </p>
+                                          </div>
+                                    </div>
+                                    <div className="self-end">
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                                                <h3 className="text-2xl font-bold mb-4">E-commerce Site</h3>
+                                                <p className="text-gray-600">
+                                                      Full-featured online store with shopping cart functionality and
+                                                      secure payment integration.
+                                                </p>
+                                          </div>
+                                    </div>
+                                    <div className="self-start">
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                                                <h3 className="text-2xl font-bold mb-4">Portfolio Website</h3>
+                                                <p className="text-gray-600">
+                                                      Modern, responsive portfolio showcasing my projects and skills in
+                                                      web development.
+                                                </p>
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
-                        <Footer />
-                </>
-        );
+                  </div>
+            </>
+      );
 }
