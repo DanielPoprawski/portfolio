@@ -14,32 +14,47 @@ export default function About() {
                               </p>
                               <div className="flex flex-col space-y-16 mx-auto">
                                     <div className="self-start">
-                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
-                                                <h3 className="text-2xl font-bold mb-4">Personal Blog</h3>
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-4/5">
+                                                <h3 className="text-2xl font-bold mb-4">
+                                                      Eugene Garden & Harvest Center
+                                                </h3>
                                                 <p className="text-gray-600">
-                                                      A responsive blog built with React and Tailwind CSS, featuring
-                                                      dynamic content management.
+                                                      A fast, responsive website for a small business based in Eugene,
+                                                      Oregon. This was my first professional project and it was built
+                                                      with React and Bootstrap.
+                                                      <img
+                                                            src="/src/assets/Eugene.png"
+                                                            alt="Eugene Garden & Harvest Center"
+                                                            className="mt-4 rounded-md shadow-sm max-w-md"
+                                                      />
                                                 </p>
                                           </div>
                                     </div>
                                     <div className="self-end">
-                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
-                                                <h3 className="text-2xl font-bold mb-4">E-commerce Site</h3>
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-4/5">
+                                                <h3 className="text-2xl font-bold mb-4">
+                                                      J&J Home Improvement Website
+                                                </h3>
                                                 <p className="text-gray-600">
-                                                      Full-featured online store with shopping cart functionality and
-                                                      secure payment integration.
+                                                      J&J Home Improvement's website and portfolio. Built with React and
+                                                      Tailwind CSS.
+                                                      <img
+                                                            src="/src/assets/JandJ-Homes.png"
+                                                            alt="J&J Home Improvement"
+                                                            className="mt-4 rounded-md shadow-sm max-w-md"
+                                                      />
                                                 </p>
                                           </div>
                                     </div>
-                                    <div className="self-start">
-                                          <div className="bg-white p-8 rounded-lg shadow-md w-96">
+                                    {/* <div className="self-start">
+                                          <div className="bg-white p-8 rounded-lg shadow-md w-max">
                                                 <h3 className="text-2xl font-bold mb-4">Portfolio Website</h3>
                                                 <p className="text-gray-600">
                                                       Modern, responsive portfolio showcasing my projects and skills in
                                                       web development.
                                                 </p>
                                           </div>
-                                    </div>
+                                    </div> */}
                               </div>
                         </div>
                   </div>
