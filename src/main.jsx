@@ -25,7 +25,7 @@ createRoot(document.getElementById("root")).render(
                               className="object-cover w-full h-full absolute"
                         />
                   </video>
-                  <Header />
+                  {/* <Header /> */}
                   <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Contact />} path="/contact" />
