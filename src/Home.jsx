@@ -1,28 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Navigation, Pagination, FreeMode, Autoplay } from "swiper/modules";
-import Card from "./components/Card";
 
 export default function Home() {
-      const [isScrolled, setIsScrolled] = useState(false);
-
-      // Handle scroll detection for navbar effects
-      useEffect(() => {
-            const handleScroll = () => {
-                  setIsScrolled(window.scrollY > 50);
-            };
-
-            window.addEventListener("scroll", handleScroll);
-            return () => window.removeEventListener("scroll", handleScroll);
-      }, []);
-
-      // Smooth scroll function for navigation
       const scrollToSection = (sectionId) => {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -32,85 +17,6 @@ export default function Home() {
 
       return (
             <div className="min-h-screen text-white">
-                  {/* Note: Parallax video already in index.html, so we don't need to add it here */}
-
-                  {/* Navigation Bar */}
-                  <nav
-                        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                              isScrolled ? "bg-gray-900 bg-opacity-80 backdrop-blur-sm shadow-lg py-2" : "py-4"
-                        }`}
-                  >
-                        <div className="container mx-auto px-6 flex justify-between items-center">
-                              <div className="font-bold text-xl">Daniel Poprawski</div>
-
-                              <div className="hidden md:flex space-x-8">
-                                    <button
-                                          onClick={() => scrollToSection("home")}
-                                          className="hover:text-blue-400 transition-colors"
-                                    >
-                                          Home
-                                    </button>
-                                    <button
-                                          onClick={() => scrollToSection("projects")}
-                                          className="hover:text-blue-400 transition-colors"
-                                    >
-                                          Projects
-                                    </button>
-                                    <button
-                                          onClick={() => scrollToSection("skills")}
-                                          className="hover:text-blue-400 transition-colors"
-                                    >
-                                          Skills
-                                    </button>
-                                    <button
-                                          onClick={() => scrollToSection("contact")}
-                                          className="hover:text-blue-400 transition-colors"
-                                    >
-                                          Contact
-                                    </button>
-                              </div>
-
-                              <div className="flex gap-4">
-                                    <a
-                                          href="/gallery"
-                                          className="p-2 rounded-md transition-all bg-gray-800 bg-opacity-60 hover:bg-blue-600"
-                                    >
-                                          <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                fill="#fff"
-                                                viewBox="0 0 384.97 384.97"
-                                          >
-                                                <g>
-                                                      <path d="M144.364 0H24.061C10.767 0 0 10.767 0 24.061v120.303c0 13.281 10.767 24.061 24.061 24.061h120.303c13.293 0 24.061-10.779 24.061-24.061V24.061C168.424 10.767 157.657 0 144.364 0m0 144.364H24.061V24.061h120.303zM360.909 0H240.606c-13.293 0-24.061 10.767-24.061 24.061v120.303c0 13.281 10.767 24.061 24.061 24.061h120.303c13.281 0 24.061-10.779 24.061-24.061V24.061C384.97 10.767 374.191 0 360.909 0m0 144.364H240.606V24.061h120.303zM360.909 216.545H240.606c-13.293 0-24.061 10.779-24.061 24.061v120.303c0 13.293 10.767 24.061 24.061 24.061h120.303c13.281 0 24.061-10.767 24.061-24.061V240.606c0-13.293-10.779-24.061-24.061-24.061m0 144.364H240.606V240.606h120.303zM144.364 216.545H24.061C10.767 216.545 0 227.325 0 240.606v120.303c0 13.293 10.767 24.061 24.061 24.061h120.303c13.293 0 24.061-10.767 24.061-24.061V240.606c-.001-13.293-10.768-24.061-24.061-24.061m0 144.364H24.061V240.606h120.303z"></path>
-                                                </g>
-                                          </svg>
-                                    </a>
-                                    <a
-                                          href="#contact"
-                                          className="p-2 rounded-md transition-all bg-gray-800 bg-opacity-60 hover:bg-blue-600"
-                                    >
-                                          <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                          >
-                                                <path
-                                                      stroke="#fff"
-                                                      strokeLinecap="round"
-                                                      strokeLinejoin="round"
-                                                      strokeWidth="1.5"
-                                                      d="M20 4 3 11l7 3M20 4l-7 17-3-7M20 4 10 14"
-                                                ></path>
-                                          </svg>
-                                    </a>
-                              </div>
-                        </div>
-                  </nav>
-
                   {/* Hero Section */}
                   <section id="home" className="min-h-screen px-4 flex items-center justify-center relative">
                         {/* Translucent overlay to ensure text readability while showing video */}
@@ -444,117 +350,49 @@ export default function Home() {
                                           <div className="space-y-4">
                                                 <div className="flex items-center">
                                                       <div className="bg-blue-600 p-3 rounded-full mr-4">
-                                                            <svg
-                                                                  className="w-6 h-6"
-                                                                  fill="none"
-                                                                  stroke="currentColor"
-                                                                  viewBox="0 0 24 24"
-                                                            >
-                                                                  <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                                                  />
-                                                            </svg>
+                                                            <Mail />
                                                       </div>
                                                       <div>
                                                             <div className="text-sm text-gray-400">Email</div>
                                                             <a
                                                                   href="mailto:daniel@example.com"
                                                                   className="hover:text-blue-400"
+                                                                  target="_blank"
                                                             >
                                                                   daniel@example.com
                                                             </a>
                                                       </div>
                                                 </div>
-
                                                 <div className="flex items-center">
                                                       <div className="bg-blue-600 p-3 rounded-full mr-4">
-                                                            <svg
-                                                                  className="w-6 h-6"
-                                                                  fill="none"
-                                                                  stroke="currentColor"
-                                                                  viewBox="0 0 24 24"
-                                                            >
-                                                                  <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                                                                  />
-                                                            </svg>
+                                                            <Linkedin />
                                                       </div>
                                                       <div>
-                                                            <div className="text-sm text-gray-400">Phone</div>
-                                                            <a href="tel:+19415551234" className="hover:text-blue-400">
-                                                                  (941) 555-1234
+                                                            <div className="text-sm text-gray-400">LinkedIn</div>
+                                                            <a
+                                                                  href="https://www.linkedin.com/in/daniel-poprawski/"
+                                                                  className="hover:text-blue-400"
+                                                                  target="_blank"
+                                                            >
+                                                                  linkedin.com/in/daniel-poprawski
                                                             </a>
                                                       </div>
                                                 </div>
-
                                                 <div className="flex items-center">
                                                       <div className="bg-blue-600 p-3 rounded-full mr-4">
-                                                            <svg
-                                                                  className="w-6 h-6"
-                                                                  fill="none"
-                                                                  stroke="currentColor"
-                                                                  viewBox="0 0 24 24"
-                                                            >
-                                                                  <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                                                                  />
-                                                                  <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        strokeWidth="2"
-                                                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                                                  />
-                                                            </svg>
+                                                            <Github />
                                                       </div>
                                                       <div>
-                                                            <div className="text-sm text-gray-400">Location</div>
-                                                            <div>Sarasota, Florida</div>
+                                                            <div className="text-sm text-gray-400">GitHub</div>
+                                                            <a
+                                                                  href="https://github.com/DanielPoprawski"
+                                                                  className="hover:text-blue-400"
+                                                                  target="_blank"
+                                                            >
+                                                                  github.com/DanielPoprawski
+                                                            </a>
                                                       </div>
                                                 </div>
-                                          </div>
-
-                                          <div className="mt-8 flex space-x-4">
-                                                <a
-                                                      href="#"
-                                                      className="bg-gray-700 p-3 rounded-full hover:bg-blue-600 transition-all"
-                                                >
-                                                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                                                      </svg>
-                                                </a>
-                                                <a
-                                                      href="#"
-                                                      className="bg-gray-700 p-3 rounded-full hover:bg-blue-600 transition-all"
-                                                >
-                                                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" />
-                                                      </svg>
-                                                </a>
-                                                <a
-                                                      href="#"
-                                                      className="bg-gray-700 p-3 rounded-full hover:bg-blue-600 transition-all"
-                                                >
-                                                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" />
-                                                      </svg>
-                                                </a>
-                                                <a
-                                                      href="#"
-                                                      className="bg-gray-700 p-3 rounded-full hover:bg-blue-600 transition-all"
-                                                >
-                                                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                                                      </svg>
-                                                </a>
                                           </div>
                                     </div>
 
