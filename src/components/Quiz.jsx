@@ -237,7 +237,7 @@ export default function Quiz() {
       };
 
       return (
-            <div className="bg-gray-100 p-6 rounded-lg max-w-md overflow-hidden shadow-lg text-black">
+            <div className="bg-gray-100 p-6 rounded-lg min-w-full overflow-hidden shadow-lg text-black">
                   <h2 className="text-2xl font-bold mb-4">Web Development Quiz</h2>
                   <p className="mb-6">
                         Test your web development knowledge with this interactive quiz. Answer the questions and see how

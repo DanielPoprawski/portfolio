@@ -83,7 +83,7 @@ export default function Login() {
       };
 
       return (
-            <div className="bg-gray-100 p-6 rounded-lg max-w-sm overflow-hidden shadow-lg text-black">
+            <div className="bg-gray-100 p-6 rounded-lg w-full overflow-hidden shadow-lg text-black">
                   <h2 className="text-2xl font-bold mb-2">Log in form</h2>
                   <p className="text-gray-600 mb-6">Sign in to your account to continue</p>
 

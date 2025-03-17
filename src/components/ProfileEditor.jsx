@@ -29,9 +29,6 @@ export default function ProfileEditor() {
             <div className="bg-gray-100 p-6 rounded-lg max-w-xl overflow-hidden shadow-lg text-black">
                   <div className="flex justify-between items-center mb-4">
                         <h2 className="text-2xl font-bold">Profile Editor</h2>
-                        <button className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full">
-                              <X size={18} />
-                        </button>
                   </div>
 
                   <div className="flex items-center justify-center mb-6 relative">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Mail, Github, Linkedin, ChevronDown } from "lucide-react";
+import { Mail, Github, Linkedin, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,9 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import ProfileEditor from "./components/ProfileEditor";
 import ReviewSection from "./components/ReviewSection";
 import SearchBar from "./components/Searchbar";
+import SRQ from "/public/SRQ-Networks.png";
+import JandJ from "/public/JandJ-Homes.png";
+import Eugene from "/public/Eugene.png";
 
 export default function Home() {
       const scrollToSection = (sectionId) => {
@@ -18,6 +21,24 @@ export default function Home() {
             if (section) {
                   section.scrollIntoView({ behavior: "smooth" });
             }
+      };
+
+      const [formData, setFormData] = useState({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+      });
+
+      const handleChange = (e) => {
+            setFormData({
+                  ...formData,
+                  [e.target.id]: e.target.value,
+            });
+      };
+
+      const handleSubmit = (e) => {
+            e.preventDefault();
       };
 
       return (
@@ -35,13 +56,14 @@ export default function Home() {
                               </h1>
 
                               <h2 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter mx-auto animate-fadeIn animation-delay-200">
-                                    Web Developer
+                                    Front-End Developer
                               </h2>
 
                               <h3 className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed mx-auto animate-fadeIn animation-delay-300">
-                                    I'm a web developer from Sarasota. I focus on creating websites that reflect your
-                                    brand and achieve results. With a keen eye for design and a commitment to quality, I
-                                    build modern websites that engage visitors and help turn them into customers.
+                                    My name's Daniel and I'm a front-end web developer from Sarasota. I focus on
+                                    creating websites that reflect your brand and achieve results. With a keen eye for
+                                    design and a commitment to quality, I build modern websites that engage visitors and
+                                    help turn them into customers.
                               </h3>
                               <button
                                     onClick={() => scrollToSection("skills")}
@@ -62,40 +84,58 @@ export default function Home() {
                                     increase visitor session duration
                               </div>
 
-                              <div className="flex flex-col md:flex-row justify-center gap-4 items-stretch">
+                              <div className="flex flex-col md:flex-row justify-center gap-4 items-center">
+                                    <button
+                                          id="prevEl"
+                                          className="inline-block px-6 py-2 bg-blue-600 rounded-full  hover:bg-blue-700 transition-all h-[4.5rem]"
+                                    >
+                                          <ChevronLeft />
+                                    </button>
+
                                     <Swiper
                                           slidesPerView={2}
                                           modules={[Navigation, Autoplay]}
                                           spaceBetween={16}
-                                          navigation={true}
-                                          className="cursor-pointer mb-16"
+                                          navigation={{
+                                                nextEl: "#nextEl",
+                                                prevEl: "#prevEl",
+                                                disabledClass:
+                                                      "bg-blue-900 cursor-not-allowed hover:bg-blue-900 !important",
+                                          }}
+                                          className=" mb-16"
                                     >
                                           <SwiperSlide>
-                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg flex-1 transition-all flex items-center justify-center">
+                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg">
                                                       <Quiz />
                                                 </div>
                                           </SwiperSlide>
                                           <SwiperSlide>
-                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg flex-1 transition-all flex items-center justify-center">
+                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg ">
                                                       <Login />
                                                 </div>
                                           </SwiperSlide>
                                           <SwiperSlide>
-                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg flex-1 transition-all flex items-center justify-center">
+                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg ">
                                                       <ProfileEditor />
                                                 </div>
                                           </SwiperSlide>
                                           <SwiperSlide>
-                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg flex-1 transition-all flex items-center justify-center">
+                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg ">
                                                       <ReviewSection />
                                                 </div>
                                           </SwiperSlide>
                                           <SwiperSlide>
-                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg flex-1 transition-all flex items-center justify-center">
+                                                <div className="bg-gray-800 rounded-xl p-8 shadow-lg ">
                                                       <SearchBar />
                                                 </div>
                                           </SwiperSlide>
                                     </Swiper>
+                                    <button
+                                          id="nextEl"
+                                          className="inline-block px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-all h-[4.5rem]"
+                                    >
+                                          <ChevronRight />
+                                    </button>
                               </div>
 
                               {/* Skills grid */}
@@ -104,10 +144,7 @@ export default function Home() {
                                     slidesPerView={4}
                                     modules={[Pagination, Autoplay]}
                                     spaceBetween={16}
-                                    pagination={{
-                                          clickable: true,
-                                    }}
-                                    className="cursor-pointer"
+                                    pagination={{ clickable: true, el: ".custom-pagination-container" }}
                               >
                                     {/* React skill */}
                                     <SwiperSlide>
@@ -303,6 +340,9 @@ export default function Home() {
                                           </div>
                                     </SwiperSlide>
                               </Swiper>
+                              <div className="mx-auto w-fit mt-4">
+                                    <div className="custom-pagination-container" />
+                              </div>
                         </div>
                   </section>
 
@@ -317,7 +357,7 @@ export default function Home() {
                                           <div className="md:flex">
                                                 <div className="md:w-1/3 h-64 bg-gray-700 flex items-center justify-center">
                                                       <img
-                                                            src="/src/assets/Eugene.png"
+                                                            src={Eugene}
                                                             alt="Eugene Garden & Harvest Center"
                                                             className="object-cover h-full w-full"
                                                       />
@@ -334,19 +374,10 @@ export default function Home() {
                                                             <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">
                                                                   React
                                                             </span>
-                                                            <span className="px-3 py-1 bg-purple-900 rounded-full text-sm">
-                                                                  Bootstrap
-                                                            </span>
                                                             <span className="px-3 py-1 bg-teal-900 rounded-full text-sm">
                                                                   Tailwind
                                                             </span>
                                                       </div>
-                                                      <a
-                                                            href="#project1"
-                                                            className="inline-block px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-all"
-                                                      >
-                                                            View Project
-                                                      </a>
                                                 </div>
                                           </div>
                                     </div>
@@ -393,7 +424,7 @@ export default function Home() {
                                           <div className="md:flex">
                                                 <div className="md:w-1/3 h-64 bg-gray-700 flex items-center justify-center">
                                                       <img
-                                                            src="/src/assets/SRQ-Networks.png"
+                                                            src={SRQ}
                                                             alt="Sarasota Networks"
                                                             className="object-cover h-full w-full"
                                                       />
@@ -416,12 +447,6 @@ export default function Home() {
                                                                   API Integration
                                                             </span>
                                                       </div>
-                                                      <a
-                                                            href="#project3"
-                                                            className="inline-block px-6 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition-all"
-                                                      >
-                                                            View Project
-                                                      </a>
                                                 </div>
                                           </div>
                                     </div>
@@ -493,7 +518,18 @@ export default function Home() {
                                     </div>
 
                                     <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
-                                          <form>
+                                          <form
+                                                name="contact"
+                                                method="POST"
+                                                data-netlify="true"
+                                                netlify-honeypot="bot-field"
+                                                onSubmit={handleSubmit}
+                                          >
+                                                <input type="hidden" name="form-name" value="contact" />
+                                                <div hidden>
+                                                      <input name="bot-field" />
+                                                </div>
+
                                                 <div className="mb-6">
                                                       <label htmlFor="name" className="block text-sm font-medium mb-2">
                                                             Your Name
@@ -501,6 +537,9 @@ export default function Home() {
                                                       <input
                                                             type="text"
                                                             id="name"
+                                                            name="name"
+                                                            value={formData.name}
+                                                            onChange={handleChange}
                                                             className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
                                                       />
                                                 </div>
@@ -512,6 +551,9 @@ export default function Home() {
                                                       <input
                                                             type="email"
                                                             id="email"
+                                                            name="email"
+                                                            value={formData.email}
+                                                            onChange={handleChange}
                                                             className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
                                                       />
                                                 </div>
@@ -526,6 +568,9 @@ export default function Home() {
                                                       <input
                                                             type="text"
                                                             id="subject"
+                                                            name="subject"
+                                                            value={formData.subject}
+                                                            onChange={handleChange}
                                                             className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
                                                       />
                                                 </div>
@@ -539,7 +584,10 @@ export default function Home() {
                                                       </label>
                                                       <textarea
                                                             id="message"
+                                                            name="message"
                                                             rows="5"
+                                                            value={formData.message}
+                                                            onChange={handleChange}
                                                             className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-blue-500"
                                                       ></textarea>
                                                 </div>

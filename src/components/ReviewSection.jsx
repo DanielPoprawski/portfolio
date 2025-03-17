@@ -200,7 +200,7 @@ export default function ReviewSection() {
                   </div>
 
                   {/* Write a review */}
-                  <div className="mb-8 p-4 bg-white rounded-lg">
+                  <div className="mb-4 p-4 bg-white rounded-lg">
                         <h3 className="font-bold text-lg mb-1 ml-1">Write a Review</h3>
                         <form onSubmit={handleSubmitReview}>
                               <div className="flex space-x-4 mb-3 ml-1">
@@ -222,20 +222,6 @@ export default function ReviewSection() {
                               </button>
                         </form>
                   </div>
-
-                  {/* Pagination info */}
-                  {allReviews.length > 0 && (
-                        <div className="flex justify-between items-center mb-4 text-sm text-gray-500">
-                              <div>
-                                    Showing {(currentPage - 1) * reviewsPerPage + 1} to{" "}
-                                    {Math.min(currentPage * reviewsPerPage, allReviews.length)} of {allReviews.length}{" "}
-                                    reviews
-                              </div>
-                              <div>
-                                    Page {currentPage} of {totalPages}
-                              </div>
-                        </div>
-                  )}
 
                   {/* Review list */}
                   <div className="space-y-6">

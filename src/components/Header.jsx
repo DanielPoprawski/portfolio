@@ -1,4 +1,5 @@
 import { useScroll } from "../context/ContextWrapper";
+import DLogoCurvy from "/public/DLogoCurvy.svg";
 
 export default function Header() {
       const { isScrolled, scrollTo } = useScroll();
@@ -11,7 +12,7 @@ export default function Header() {
             >
                   <div className="container mx-auto px-6 flex justify-between items-center">
                         <div className="font-bold text-xl text-white flex gap-4">
-                              <img src="/public/DLogoCurvy.svg" className="w-8 h-8" />
+                              <img src={DLogoCurvy} className="w-8 h-8" />
                               Daniel Poprawski
                         </div>
 
@@ -23,16 +24,16 @@ export default function Header() {
                                     Home
                               </button>
                               <button
-                                    onClick={() => scrollTo("projects")}
-                                    className="hover:text-blue-400 transition-colors text-white"
-                              >
-                                    Projects
-                              </button>
-                              <button
                                     onClick={() => scrollTo("skills")}
                                     className="hover:text-blue-400 transition-colors text-white"
                               >
                                     Skills
+                              </button>
+                              <button
+                                    onClick={() => scrollTo("projects")}
+                                    className="hover:text-blue-400 transition-colors text-white"
+                              >
+                                    Projects
                               </button>
                               <button
                                     onClick={() => scrollTo("contact")}

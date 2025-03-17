@@ -42,7 +42,7 @@ export default function SearchBar() {
       };
 
       return (
-            <div className="w-full max-w-md">
+            <div className="w-full min-w-md">
                   <div className="bg-gray-100 rounded-lg p-6 shadow-lg text-black">
                         <h2 className="text-2xl font-bold mb-4">Search Component</h2>
 
