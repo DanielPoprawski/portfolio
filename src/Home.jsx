@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy } from "react";
 import { Mail, Github, Linkedin, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import Quiz from "./components/Quiz";
 import Login from "./components/Login";
@@ -11,34 +11,53 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import ProfileEditor from "./components/ProfileEditor";
 import ReviewSection from "./components/ReviewSection";
 import SearchBar from "./components/Searchbar";
-import SRQ from "/public/SRQ-Networks.png";
-import JandJ from "/public/JandJ-Homes.png";
-import Eugene from "/public/Eugene.png";
 import { X, Check } from "lucide-react";
+import SRQ from "/public/SRQ-Networks.webp";
+import CompeteStudio from "/public/CompeteStudio.webp";
+import Eugene from "/public/Eugene.webp";
 
 export default function Home() {
       const scrollToSection = (sectionId) => {
             const section = document.getElementById(sectionId);
             if (section) {
-                  section.scrollIntoView({ behavior: "smooth" });
+                  section.scrollIntoView({
+                        behavior: "smooth",
+                  });
             }
       };
 
       const [successModal, setSuccessModal] = useState(false);
       const [errorModal, setErrorModal] = useState(false);
-      const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
+      const [formData, setFormData] = useState({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+      });
 
       const handleChange = (e) => {
-            setFormData({ ...formData, [e.target.id]: e.target.value });
+            setFormData({
+                  ...formData,
+                  [e.target.id]: e.target.value,
+            });
       };
 
       const handleSubmit = (e) => {
             fetch("/", {
                   method: "POST",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                  headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                  },
                   body: new URLSearchParams(formData).toString(),
             })
-                  .then(() => setSuccessModal(true))
+                  .then((response) => {
+                        if (response.ok) {
+                              setSuccessModal(true);
+                        } else {
+                              console.error(response);
+                              setErrorModal(true);
+                        }
+                  })
                   .catch((error) => {
                         setErrorModal(true);
                         throw error;
@@ -54,26 +73,17 @@ export default function Home() {
                         <div className="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
 
                         <div className="text-white space-y-8 text-center z-10 max-w-5xl">
-                              <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tighter animate-fadeIn">
-                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-                                          Daniel Poprawski
-                                    </span>
+                              <h1 className="lg:text-8xl text-5xl font-bold leading-tight tracking-tighter animate-fadeIn">
+                                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">Daniel Poprawski</span>
                               </h1>
 
-                              <h2 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter mx-auto animate-fadeIn animation-delay-200">
-                                    Front-End Developer
-                              </h2>
+                              <h2 className="text-4xl lg:text-7xl font-bold leading-tight tracking-tighter mx-auto animate-fadeIn animation-delay-200">Full Stack Developer</h2>
 
-                              <h3 className="text-xl md:text-2xl text-gray-300 max-w-3xl leading-relaxed mx-auto animate-fadeIn animation-delay-300">
-                                    My name's Daniel and I'm a front-end web developer from Sarasota. I focus on
-                                    creating websites that reflect your brand and achieve results. With a keen eye for
-                                    design and a commitment to quality, I build modern websites that engage visitors and
-                                    help turn them into customers.
+                              <h3 className="text-lg lg:text-2xl text-gray-300 max-w-3xl leading-relaxed mx-auto animate-fadeIn animation-delay-300">
+                                    My name's Daniel and I'm a full stack developer from Sarasota. I focus on creating websites that reflect your brand and achieve results. With a
+                                    keen eye for design and a commitment to quality, I build modern websites that engage visitors and help turn them into customers.
                               </h3>
-                              <button
-                                    onClick={() => scrollToSection("skills")}
-                                    className="block mx-auto mt-16 animate-bounce"
-                              >
+                              <button onClick={() => scrollToSection("skills")} className="block mx-auto mt-16 animate-bounce">
                                     <ChevronDown className="w-10 h-10" />
                               </button>
                         </div>
@@ -82,32 +92,33 @@ export default function Home() {
                   {/* Skills Section */}
                   <section id="skills" className="min-h-fit py-24 relative">
                         <div className="absolute inset-0 bg-slate-700 bg-opacity-85 backdrop-blur-md z-0"></div>
-                        <div className="w-3/4 mx-auto relative z-10">
+                        <div className=" relative mx-auto container">
                               <h2 className="text-4xl md:text-5xl mb-6 font-bold text-center">My Skills</h2>
                               <div className="text-center mx-auto text-lg font-semibold max-w-lg text-gray-200 mb-16">
-                                    Check out some engaging and interactive components that I can put on your website to
-                                    increase visitor session duration
+                                    Check out some engaging and interactive components that I can put on your website to increase visitor session duration
                               </div>
 
-                              <div className="flex flex-col md:flex-row justify-center gap-4 items-center">
-                                    <button
-                                          id="prevEl"
-                                          className="inline-block px-6 py-2 bg-blue-600 rounded-full  hover:bg-blue-700 transition-all h-[4.5rem]"
-                                    >
+                              <div className="flex flex-row justify-center gap-4 items-center">
+                                    <button id="prevEl" className="hidden lg:inline-block px-6 py-2 bg-blue-600 rounded-full  hover:bg-blue-700 transition-all h-[4.5rem]">
                                           <ChevronLeft />
                                     </button>
 
                                     <Swiper
-                                          slidesPerView={2}
+                                          slidesPerView={1}
                                           modules={[Navigation, Autoplay]}
-                                          spaceBetween={16}
+                                          spaceBetween={0}
+                                          breakpoints={{
+                                                1024: {
+                                                      slidesPerView: 2,
+                                                      spaceBetween: 16,
+                                                },
+                                          }}
                                           navigation={{
                                                 nextEl: "#nextEl",
                                                 prevEl: "#prevEl",
-                                                disabledClass:
-                                                      "bg-blue-900 cursor-not-allowed hover:bg-blue-900 !important",
+                                                disabledClass: "bg-blue-900 cursor-not-allowed hover:bg-blue-900 !important",
                                           }}
-                                          className=" mb-16"
+                                          className=" mb-16 mx-2"
                                     >
                                           <SwiperSlide>
                                                 <div className="bg-gray-800 rounded-xl p-8 shadow-lg">
@@ -135,19 +146,29 @@ export default function Home() {
                                                 </div>
                                           </SwiperSlide>
                                     </Swiper>
-                                    <button
-                                          id="nextEl"
-                                          className="inline-block px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-all h-[4.5rem]"
-                                    >
+                                    <button id="nextEl" className="hidden lg:inline-block px-6 py-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-all h-[4.5rem]">
                                           <ChevronRight />
                                     </button>
                               </div>
 
                               <Swiper
-                                    slidesPerView={6}
+                                    slidesPerView={2}
                                     modules={[Pagination, Autoplay]}
-                                    spaceBetween={16}
-                                    pagination={{ clickable: true, el: ".custom-pagination-container" }}
+                                    spaceBetween={4}
+                                    breakpoints={{
+                                          720: {
+                                                slidesPerView: 4,
+                                                spaceBetween: 4,
+                                          },
+                                          1024: {
+                                                slidesPerView: 6,
+                                                spaceBetween: 8,
+                                          },
+                                    }}
+                                    pagination={{
+                                          clickable: true,
+                                          el: ".custom-pagination-container",
+                                    }}
                               >
                                     {/* React skill */}
                                     <SwiperSlide className="h-full">
@@ -161,9 +182,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">React</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Modern UI development with component-based architecture
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Modern UI development with component-based architecture</p>
                                           </div>
                                     </SwiperSlide>
                                     {/* Tailwind CSS skill */}
@@ -178,9 +197,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Tailwind CSS</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Utility-first CSS framework for rapid UI development
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Utility-first CSS framework for rapid UI development</p>
                                           </div>
                                     </SwiperSlide>
                                     {/* Node.js skill */}
@@ -207,9 +224,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Node.js</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Server-side JavaScript runtime for scalable applications
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Server-side JavaScript runtime for scalable applications</p>
                                           </div>
                                     </SwiperSlide>
                                     {/* Bootstrap skill */}
@@ -224,9 +239,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Bootstrap</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Frontend framework for responsive and mobile-first websites
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Frontend framework for responsive and mobile-first websites</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -240,9 +253,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Java</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Cross-platform object-oriented enterprise programming language
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Cross-platform object-oriented enterprise programming language</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -256,9 +267,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">JavaScript</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Dynamic programming language for interactive web applications
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Dynamic programming language for interactive web applications</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -272,9 +281,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">HTML5</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Markup language for structuring content on the web
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Markup language for structuring content on the web</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -288,9 +295,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">CSS3</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Style sheet language for designing and layout of web pages
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Style sheet language for designing and layout of web pages</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -304,9 +309,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">TypeScript</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Typed superset of JavaScript that compiles to plain JavaScript
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Typed superset of JavaScript that compiles to plain JavaScript</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -320,9 +323,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Git</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Distributed version control system for tracking changes in code
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Distributed version control system for tracking changes in code</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
@@ -336,24 +337,14 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Netlify</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Platform for automated deployment, serverless functions, and forms
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Platform for automated deployment, serverless functions, and forms</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
                                           <div className="bg-gray-800 p-6 rounded-lg text-center">
                                                 <div className="text-teal-400 text-5xl mb-4">
-                                                      <svg
-                                                            viewBox="0 0 16 16"
-                                                            className="w-16 h-16 mx-auto"
-                                                            fill="none"
-                                                      >
-                                                            <g
-                                                                  id="SVGRepo_tracerCarrier"
-                                                                  strokeLinecap="round"
-                                                                  strokeLinejoin="round"
-                                                            ></g>
+                                                      <svg viewBox="0 0 16 16" className="w-16 h-16 mx-auto" fill="none">
+                                                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                                                             <g>
                                                                   <path
                                                                         fill="#202020"
@@ -391,19 +382,13 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Linux</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Server-oriented free and open source operating system
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Server-oriented free and open source operating system</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
                                           <div className="bg-gray-800 p-6 rounded-lg text-center">
                                                 <div className="text-teal-400 text-5xl mb-4">
-                                                      <svg
-                                                            viewBox="-8.78 0 70 70"
-                                                            fill="#000000"
-                                                            className="w-16 h-16 mx-auto"
-                                                      >
+                                                      <svg viewBox="-8.78 0 70 70" fill="#000000" className="w-16 h-16 mx-auto">
                                                             <g id="SVGRepo_iconCarrier">
                                                                   <path
                                                                         d="m 852.97077,1013.9363 c -6.55238,-0.4723 -13.02857,-2.1216 -17.00034,-4.3296 -2.26232,-1.2576 -3.98589,-2.8032 -4.66223,-4.1807 l -0.4024,-0.8196 0,-25.70807 0,-25.7081 0.31843,-0.6465 c 1.42297,-2.889 5.96432,-5.4935 12.30378,-7.0562 2.15195,-0.5305 5.2586,-1.0588 7.79304,-1.3252 2.58797,-0.2721 9.44765,-0.2307 12.02919,0.073 6.86123,0.8061 12.69967,2.6108 16.29768,5.0377 1.38756,0.9359 2.81137,2.4334 3.29371,3.4642 l 0.41358,0.8838 -0.0354,25.6303 -0.0354,25.63047 -0.33195,0.6744 c -0.18257,0.3709 -0.73406,1.1007 -1.22553,1.6216 -2.99181,3.1715 -9.40919,5.5176 -17.8267,6.5172 -1.71567,0.2038 -9.16916,0.3686 -10.92937,0.2417 z m 12.07501,-22.02839 c -0.0252,-0.0657 -1.00472,-0.93831 -2.17671,-1.93922 -1.17199,-1.00091 -2.18138,-1.86687 -2.24309,-1.92436 -0.0617,-0.0575 0.15481,-0.26106 0.48117,-0.45237 0.32635,-0.19131 0.95163,-0.7235 1.3895,-1.18265 1.2805,-1.34272 1.88466,-3.00131 1.88466,-5.17388 0,-2.1388 -0.65162,-3.8645 -1.95671,-5.1818 -1.31533,-1.3278 -2.82554,-1.8983 -5.02486,-1.8983 -3.39007,0 -5.99368,1.9781 -6.82468,5.1851 -0.28586,1.1031 -0.28432,3.33211 0.003,4.31023 0.74941,2.55136 2.79044,4.40434 5.33062,4.83946 0.8596,0.14724 0.97605,0.21071 1.5621,0.85144 0.34829,0.38078 1.06301,1.14085 1.58827,1.68904 l 0.95501,0.9967 2.53878,0 c 1.39633,0 2.51816,-0.0537 2.49296,-0.11939 z m -8.70653,-7.10848 c -0.61119,-0.31868 -0.84225,-0.56599 -1.19079,-1.27453 -0.26919,-0.54724 -0.31522,-0.85851 -0.31824,-2.15197 -0.003,-1.3143 0.0388,-1.5983 0.31987,-2.169 0.45985,-0.9339 1.09355,-1.376 2.07384,-1.4469 1.36454,-0.099 2.15217,0.5707 2.56498,2.1801 0.50612,1.97321 -0.0504,4.07107 -1.26471,4.76729 -0.63707,0.36527 -1.58737,0.40659 -2.18495,0.095 z m -11.25315,3.66269 c 2.66179,-0.5048 4.1728,-2.0528 4.1728,-4.27495 0,-1.97137 -0.97548,-3.12004 -3.6716,-4.32364 -1.54338,-0.689 -2.10241,-1.1215 -2.10241,-1.6268 0,-0.4188 0.53052,-0.8777 1.14813,-0.993 0.60302,-0.1126 2.20237,0.1652 3.14683,0.5467 l 0.79167,0.3198 0,-1.7524 0,-1.7525 -0.85923,-0.1906 c -0.53103,-0.1178 -1.64689,-0.1885 -2.92137,-0.1849 -1.80528,0 -2.15881,0.044 -2.83818,0.3138 -1.98445,0.7878 -2.92613,2.1298 -2.91107,4.1485 0.0141,1.8898 1.01108,3.06864 3.49227,4.12912 1.46399,0.62572 2.05076,1.10218 2.05076,1.66522 0,1.1965 -1.99362,1.34375 -4.10437,0.30315 -0.57805,-0.28498 -1.09739,-0.54137 -1.1541,-0.56976 -0.0567,-0.0284 -0.10311,0.79023 -0.10311,1.81917 0,1.86239 0.002,1.87137 0.33919,1.99974 1.26979,0.48278 4.07626,0.69787 5.52379,0.42335 z m 30.4308,-1.72766 0,-1.58098 -2.40584,0 -2.40583,0 0,-5.43035 0,-5.4303 -2.13089,0 -2.13088,0 0,7.0113 0,7.01131 4.53672,0 4.53672,0 0,-1.58098 z m -14.84745,-27.70503 c 4.23447,-0.2937 7.4086,-0.8482 10.20178,-1.7821 2.78264,-0.9304 4.42643,-2.0562 4.79413,-3.2834 0.14166,-0.4729 0.13146,-0.6523 -0.0665,-1.1708 -0.88775,-2.3245 -5.84694,-4.1104 -13.42493,-4.8345 -3.24154,-0.3098 -9.13671,-0.2094 -12.22745,0.2081 -4.71604,0.6372 -8.54333,1.8208 -10.2451,3.1683 -3.44251,2.726 0.19793,5.7242 8.66397,7.1354 3.67084,0.6119 8.42674,0.828 12.30414,0.559 z"
@@ -414,19 +399,13 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">SQL</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Server query language for managing databases
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Server query language for managing databases</p>
                                           </div>
                                     </SwiperSlide>
                                     <SwiperSlide>
                                           <div className="bg-gray-800 p-6 rounded-lg text-center">
                                                 <div className=" mb-4 w-16 h-16 mx-auto">
-                                                      <svg
-                                                            viewBox="0 -30 150 150"
-                                                            fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                      >
+                                                      <svg viewBox="0 -30 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <g>
                                                                   <path
                                                                         d="M122.714 62.703c5.28-.643 16.924-2.027 18.997.643 2.072 2.621-2.319 13.649-4.293 18.544-.592 1.484.691 2.077 2.023.94 8.684-7.319 10.954-22.6 9.178-24.825-1.777-2.175-17.023-4.055-26.3 2.473-1.431 1.038-1.184 2.423.395 2.225z"
@@ -444,9 +423,7 @@ export default function Home() {
                                                       </svg>
                                                 </div>
                                                 <h3 className="font-bold text-xl">Amazon Web Services</h3>
-                                                <p className="text-gray-400 mt-2">
-                                                      Managing instances on the world's premier server network.
-                                                </p>
+                                                <p className="text-gray-400 mt-2">Managing instances on the world's premier server network.</p>
                                           </div>
                                     </SwiperSlide>
                               </Swiper>
@@ -466,27 +443,37 @@ export default function Home() {
                                     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
                                           <div className="md:flex">
                                                 <div className="md:w-1/3 h-64 bg-gray-700 flex items-center justify-center">
-                                                      <img
-                                                            src={Eugene}
-                                                            alt="Eugene Garden & Harvest Center"
-                                                            className="object-cover h-full w-full"
-                                                      />
+                                                      <img lazy src={CompeteStudio} alt="Compete Studio" className="object-cover h-full w-full" />
                                                 </div>
                                                 <div className="p-8 md:w-2/3">
-                                                      <h3 className="text-2xl font-bold mb-4">
-                                                            Eugene Garden & Harvest Center
-                                                      </h3>
+                                                      <h3 className="text-2xl font-bold mb-4">Compete Studio</h3>
                                                       <p className="text-gray-300 mb-6">
-                                                            A fast, responsive website built with React, Bootstrap, and
-                                                            Tailwind CSS. It emphasizes modern design and performance.
+                                                            Contributing to the team at Compete Studio, where we develop specialized customer relationship management solutions for
+                                                            dance studios nationwide.
                                                       </p>
                                                       <div className="flex flex-wrap gap-2 mb-6">
-                                                            <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">
-                                                                  React
-                                                            </span>
-                                                            <span className="px-3 py-1 bg-teal-900 rounded-full text-sm">
-                                                                  Tailwind
-                                                            </span>
+                                                            <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">React</span>
+                                                            <span className="px-3 py-1 bg-teal-900 rounded-full text-sm">Tailwind</span>
+                                                            <span className="px-3 py-1 bg-amber-700 rounded-full text-sm">Firebase</span>
+                                                            <span className="px-3 py-1 bg-red-900 rounded-full text-sm">Express</span>
+                                                            <span className="px-3 py-1 bg-stone-600 rounded-full text-sm">MS SQL Server</span>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                                          <div className="md:flex">
+                                                <div className="md:w-1/3 h-64 bg-gray-700 flex items-center justify-center">
+                                                      <img lazy src={Eugene} alt="Eugene Garden & Harvest Center" className="object-cover h-full w-full" />
+                                                </div>
+                                                <div className="p-8 md:w-2/3">
+                                                      <h3 className="text-2xl font-bold mb-4">Eugene Garden & Harvest Center</h3>
+                                                      <p className="text-gray-300 mb-6">
+                                                            A fast, responsive website built with React, Bootstrap, and Tailwind CSS. It emphasizes modern design and performance.
+                                                      </p>
+                                                      <div className="flex flex-wrap gap-2 mb-6">
+                                                            <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">React</span>
+                                                            <span className="px-3 py-1 bg-teal-900 rounded-full text-sm">Tailwind</span>
                                                       </div>
                                                 </div>
                                           </div>
@@ -533,29 +520,18 @@ export default function Home() {
                                     <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
                                           <div className="md:flex">
                                                 <div className="md:w-1/3 h-64 bg-gray-700 flex items-center justify-center">
-                                                      <img
-                                                            src={SRQ}
-                                                            alt="Sarasota Networks"
-                                                            className="object-cover h-full w-full"
-                                                      />
+                                                      <img lazy src={SRQ} alt="Sarasota Networks" className="object-cover h-full w-full" />
                                                 </div>
                                                 <div className="p-8 md:w-2/3">
                                                       <h3 className="text-2xl font-bold mb-4">Sarasota Networks</h3>
                                                       <p className="text-gray-300 mb-6">
-                                                            This homepage includes bill payment integration, secure
-                                                            login, and an interactive help desk. It combines robust
-                                                            services with a user-friendly design.
+                                                            This homepage includes bill payment integration, secure login, and an interactive help desk. It combines robust services
+                                                            with a user-friendly design.
                                                       </p>
                                                       <div className="flex flex-wrap gap-2 mb-6">
-                                                            <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">
-                                                                  React
-                                                            </span>
-                                                            <span className="px-3 py-1 bg-green-900 rounded-full text-sm">
-                                                                  Node.js
-                                                            </span>
-                                                            <span className="px-3 py-1 bg-red-900 rounded-full text-sm">
-                                                                  API Integration
-                                                            </span>
+                                                            <span className="px-3 py-1 bg-blue-900 rounded-full text-sm">React</span>
+                                                            <span className="px-3 py-1 bg-green-900 rounded-full text-sm">Node.js</span>
+                                                            <span className="px-3 py-1 bg-red-900 rounded-full text-sm">API Integration</span>
                                                       </div>
                                                 </div>
                                           </div>
@@ -568,10 +544,7 @@ export default function Home() {
                         {successModal && (
                               <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                                     <div className="bg-gray-800 rounded-lg p-8 relative shadow-xl max-w-md w-full mx-4">
-                                          <button
-                                                onClick={() => setSuccessModal(false)}
-                                                className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
-                                          >
+                                          <button onClick={() => setSuccessModal(false)} className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors">
                                                 <X className="w-6 h-6" />
                                           </button>
                                           <div className="text-center">
@@ -579,10 +552,7 @@ export default function Home() {
                                                       <Check />
                                                 </div>
                                                 <h2 className="text-2xl font-bold text-white mb-2">Message Sent!</h2>
-                                                <p className="text-gray-300">
-                                                      Thank you for reaching out. I'll get back to you as soon as
-                                                      possible.
-                                                </p>
+                                                <p className="text-gray-300">Thank you for reaching out. I'll get back to you as soon as possible.</p>
                                           </div>
                                     </div>
                               </div>
@@ -590,10 +560,7 @@ export default function Home() {
                         {errorModal && (
                               <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                                     <div className="bg-gray-800 rounded-lg p-8 relative shadow-xl max-w-md w-full mx-4">
-                                          <button
-                                                onClick={() => setErrorModal(false)}
-                                                className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
-                                          >
+                                          <button onClick={() => setErrorModal(false)} className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors">
                                                 <X className="w-6 h-6" />
                                           </button>
                                           <div className="text-center">
@@ -602,8 +569,7 @@ export default function Home() {
                                                 </div>
                                                 <h2 className="text-2xl font-bold text-white mb-2">Error!</h2>
                                                 <p className="text-gray-300 border-b border-dashed border-gray-500 pb-4">
-                                                      Something went wrong. Please either try again, or reach out to me
-                                                      via email
+                                                      Something went wrong. Please either try again, or reach out to me via email
                                                 </p>
                                                 <p className="mt-4">
                                                       <a href="mailto:daniel@daniel-p.dev">daniel@daniel-p.dev</a>
@@ -620,9 +586,8 @@ export default function Home() {
                                     <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
                                           <h3 className="text-2xl font-semibold mb-6">Let's Work Together</h3>
                                           <p className="text-gray-300 mb-8">
-                                                Ready to take your online presence to the next level? I'm here to help
-                                                turn your vision into reality. Whether you need a brand new website, a
-                                                redesign, or custom web development, I'm just a message away.
+                                                Ready to take your online presence to the next level? I'm here to help turn your vision into reality. Whether you need a brand new
+                                                website, a redesign, or custom web development, I'm just a message away.
                                           </p>
 
                                           <div className="space-y-4">
@@ -632,11 +597,7 @@ export default function Home() {
                                                       </div>
                                                       <div>
                                                             <div className="text-sm text-gray-400">Email</div>
-                                                            <a
-                                                                  href="mailto:daniel@daniel-p.dev"
-                                                                  className="hover:text-blue-400"
-                                                                  target="_blank"
-                                                            >
+                                                            <a href="mailto:daniel@daniel-p.dev" className="hover:text-blue-400" target="_blank">
                                                                   daniel@daniel-p.dev
                                                             </a>
                                                       </div>
@@ -647,11 +608,7 @@ export default function Home() {
                                                       </div>
                                                       <div>
                                                             <div className="text-sm text-gray-400">LinkedIn</div>
-                                                            <a
-                                                                  href="https://www.linkedin.com/in/daniel-poprawski/"
-                                                                  className="hover:text-blue-400"
-                                                                  target="_blank"
-                                                            >
+                                                            <a href="https://www.linkedin.com/in/daniel-poprawski/" className="hover:text-blue-400" target="_blank">
                                                                   linkedin.com/in/daniel-poprawski
                                                             </a>
                                                       </div>
@@ -662,11 +619,7 @@ export default function Home() {
                                                       </div>
                                                       <div>
                                                             <div className="text-sm text-gray-400">GitHub</div>
-                                                            <a
-                                                                  href="https://github.com/DanielPoprawski"
-                                                                  className="hover:text-blue-400"
-                                                                  target="_blank"
-                                                            >
+                                                            <a href="https://github.com/DanielPoprawski" className="hover:text-blue-400" target="_blank">
                                                                   github.com/DanielPoprawski
                                                             </a>
                                                       </div>
@@ -675,13 +628,7 @@ export default function Home() {
                                     </div>
 
                                     <div className="bg-gray-800 rounded-lg p-8 shadow-lg">
-                                          <form
-                                                name="contact"
-                                                method="POST"
-                                                data-netlify="true"
-                                                netlify-honeypot="bot-field"
-                                                onSubmit={handleSubmit}
-                                          >
+                                          <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
                                                 <input type="hidden" name="form-name" value="contact" />
                                                 <div hidden>
                                                       <input name="bot-field" />
@@ -716,10 +663,7 @@ export default function Home() {
                                                 </div>
 
                                                 <div className="mb-6">
-                                                      <label
-                                                            htmlFor="subject"
-                                                            className="block text-sm font-medium mb-2"
-                                                      >
+                                                      <label htmlFor="subject" className="block text-sm font-medium mb-2">
                                                             Subject
                                                       </label>
                                                       <input
@@ -733,10 +677,7 @@ export default function Home() {
                                                 </div>
 
                                                 <div className="mb-6">
-                                                      <label
-                                                            htmlFor="message"
-                                                            className="block text-sm font-medium mb-2"
-                                                      >
+                                                      <label htmlFor="message" className="block text-sm font-medium mb-2">
                                                             Your Message
                                                       </label>
                                                       <textarea
@@ -749,10 +690,7 @@ export default function Home() {
                                                       ></textarea>
                                                 </div>
 
-                                                <button
-                                                      type="submit"
-                                                      className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all"
-                                                >
+                                                <button type="submit" className="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition-all">
                                                       Send Message
                                                 </button>
                                           </form>
